@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jofred Claircy – Étudiant BTS SIO SLAM</title>
+<meta name="description" content="Portfolio et projets de Jofred Claircy, étudiant en BTS SIO option SLAM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a1f3d;
+  --deep:#06142b;
+  --paper:#eef3fb;
+  --signal:#2f7bff;
+  --mint:#7ee8c7;
+  --muted:#9db0cf;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:"Instrument Sans",system-ui,sans-serif;
+  background:var(--deep);
+  color:var(--paper);
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+header{
+  padding:clamp(24px,4vw,48px) clamp(24px,5vw,64px) 0;
+}
+h1{
+  font-family:"Bricolage Grotesque",sans-serif;
+  font-weight:800;
+  font-size:clamp(2.4rem,7vw,5.5rem);
+  line-height:.95;
+  letter-spacing:-.03em;
+}
+header p{
+  margin-top:16px;
+  max-width:44ch;
+  color:var(--muted);
+  font-size:clamp(1rem,1.6vw,1.2rem);
+  line-height:1.5;
+}
+main{
+  flex:1;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(12px,2vw,24px);
+  padding:clamp(24px,4vw,48px) clamp(24px,5vw,64px);
+  transition:grid-template-columns .4s ease;
+}
+main:has(.choice:nth-child(1):hover){grid-template-columns:1.35fr 1fr}
+main:has(.choice:nth-child(2):hover){grid-template-columns:1fr 1.35fr}
+.choice{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:280px;
+  padding:clamp(24px,3vw,40px);
+  border-radius:28px 28px 28px 6px;
+  text-decoration:none;
+  overflow:hidden;
+  transition:transform .3s ease;
+}
+.choice:hover{transform:translateY(-4px)}
+.choice:focus-visible{outline:3px solid var(--mint);outline-offset:4px}
+.portfolio{background:var(--paper);color:var(--ink)}
+.bank{background:var(--signal);color:#fff}
+.choice h2{
+  font-family:"Bricolage Grotesque",sans-serif;
+  font-weight:800;
+  font-size:clamp(2rem,4.5vw,3.6rem);
+  line-height:1;
+  letter-spacing:-.025em;
+}
+.choice p{
+  margin-top:14px;
+  max-width:34ch;
+  line-height:1.5;
+  opacity:.8;
+}
+.go{
+  align-self:flex-start;
+  margin-top:32px;
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-weight:500;
+  padding:12px 20px;
+  border-radius:999px;
+  background:var(--ink);
+  color:var(--paper);
+  transition:gap .25s ease, background .25s ease;
+}
+.bank .go{background:#fff;color:var(--ink)}
+.choice:hover .go{gap:20px}
+.shape{
+  position:absolute;
+  right:-60px;
+  top:-60px;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:var(--mint);
+  opacity:.9;
+}
+.bank .shape{background:var(--ink);opacity:.35;border-radius:40px;transform:rotate(18deg)}
+footer{
+  padding:0 clamp(24px,5vw,64px) 28px;
+  color:var(--muted);
+  font-size:.9rem;
+}
+.intro{animation:rise .8s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (max-width:760px){
+  main,main:has(.choice:hover){grid-template-columns:1fr}
+  .choice{min-height:220px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="intro">
+  <h1>Jofred<br>Claircy</h1>
+  <p>Étudiant en deuxième année de BTS SIO, option SLAM. Choisis ce que tu veux découvrir.</p>
+</header>
+
+<main>
+  <a class="choice portfolio" href="portfolio.html">
+    <span class="shape"></span>
+    <div>
+      <h2>Mon portfolio</h2>
+      <p>Mon parcours, mes compétences et mes réalisations en développement.</p>
+    </div>
+    <span class="go">Voir le portfolio <span aria-hidden="true">→</span></span>
+  </a>
+
+  <a class="choice bank" href="mabanque/">
+    <span class="shape"></span>
+    <div>
+      <h2>Projet Mabanque</h2>
+      <p>Mon application bancaire, réalisée dans le cadre du BTS.</p>
+    </div>
+    <span class="go">Ouvrir le projet <span aria-hidden="true">→</span></span>
+  </a>
+</main>
+
+<footer>© 2026 Jofred Claircy</footer>
+</body>
+</html>
