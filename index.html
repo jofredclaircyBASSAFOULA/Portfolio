@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Claircy | Portfolio Développeur Web</title>
+
+    <meta name="description"
+          content="Portfolio de Claircy, étudiant en BTS SIO SLAM et développeur web.">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --background: #070b14;
+            --background-light: #0d1322;
+            --card: rgba(255,255,255,0.055);
+            --card-hover: rgba(255,255,255,0.09);
+
+            --primary: #6c63ff;
+            --primary-light: #8b85ff;
+            --secondary: #00d4ff;
+
+            --text: #f5f7ff;
+            --text-light: #a8afc1;
+
+            --border: rgba(255,255,255,0.09);
+
+            --radius: 20px;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(7,11,20,0.78);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            height: 75px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--primary-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding-top: 100px;
+
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            background: var(--primary);
+
+            filter: blur(180px);
+            opacity: 0.15;
+
+            top: 100px;
+            left: -150px;
+
+            pointer-events: none;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+
+            padding: 8px 15px;
+
+            border-radius: 30px;
+
+            background: rgba(108,99,255,0.12);
+            border: 1px solid rgba(108,99,255,0.25);
+
+            color: #aaa5ff;
+
+            font-size: 13px;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 80px);
+            line-height: 1.05;
+            letter-spacing: -4px;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(
+                90deg,
+                var(--primary-light),
+                var(--secondary)
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-description {
+            max-width: 650px;
+
+            color: var(--text-light);
+
+            font-size: 18px;
+
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 22px;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: 0.3s;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+
+            box-shadow: 0 10px 30px rgba(108,99,255,0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: var(--primary-light);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            color: white;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================
+           CODE CARD
+        ========================= */
+
+        .code-card {
+            background: rgba(255,255,255,0.04);
+
+            border: 1px solid var(--border);
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.35);
+
+            transform: rotate(2deg);
+
+            transition: 0.4s;
+        }
+
+        .code-card:hover {
+            transform: rotate(0deg) translateY(-8px);
+        }
+
+        .window-top {
+            display: flex;
+            gap: 7px;
+            margin-bottom: 25px;
+        }
+
+        .dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #555;
+        }
+
+        .code {
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            line-height: 2;
+
+            color: #d7d9e3;
+        }
+
+        .code .purple {
+            color: #9c8cff;
+        }
+
+        .code .green {
+            color: #7be495;
+        }
+
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            padding: 110px 0;
+        }
+
+        .section-title {
+            margin-bottom: 55px;
+        }
+
+        .section-title span {
+            color: var(--primary-light);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            margin-top: 10px;
+            letter-spacing: -1.5px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 650px;
+            margin-top: 15px;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .about-card {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            padding: 35px;
+
+            transition: 0.3s;
+        }
+
+        .about-card:hover {
+            background: var(--card-hover);
+            transform: translateY(-5px);
+        }
+
+        .about-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .about-card p {
+            color: var(--text-light);
+        }
+
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+
+            margin-top: 25px;
+        }
+
+        .stat {
+            padding: 25px;
+
+            background: rgba(255,255,255,0.035);
+
+            border: 1px solid var(--border);
+
+            border-radius: 16px;
+
+            text-align: center;
+        }
+
+        .stat strong {
+            display: block;
+
+            font-size: 28px;
+
+            color: white;
+        }
+
+        .stat span {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            padding: 30px;
+
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-7px);
+            background: var(--card-hover);
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background: rgba(108,99,255,0.12);
+
+            margin-bottom: 20px;
+
+            font-size: 22px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            position: relative;
+
+            padding: 30px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            overflow: hidden;
+
+            transition: 0.35s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(108,99,255,0.3);
+        }
+
+        .project-number {
+            color: var(--primary-light);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .project-card h3 {
+            font-size: 25px;
+            margin: 12px 0;
+        }
+
+        .project-card p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 6px 10px;
+
+            border-radius: 8px;
+
+            background: rgba(255,255,255,0.06);
+
+            color: #cbd0df;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           STAGE
+        ========================= */
+
+        .stage {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 50px;
+
+            align-items: center;
+        }
+
+        .stage-year {
+            font-size: 100px;
+            font-weight: 800;
+
+            line-height: 1;
+
+            background: linear-gradient(
+                90deg,
+                var(--primary),
+                var(--secondary)
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stage-info h3 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .stage-info p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .stage-list {
+            list-style: none;
+        }
+
+        .stage-list li {
+            padding: 10px 0;
+
+            color: #d8dbe5;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stage-list li::before {
+            content: "✓";
+            color: var(--primary-light);
+            margin-right: 10px;
+        }
+
+
+        /* =========================
+           PARCOURS
+        ========================= */
+
+        .timeline {
+            position: relative;
+
+            max-width: 800px;
+
+            margin: auto;
+        }
+
+        .timeline::before {
+            content: "";
+
+            position: absolute;
+
+            left: 8px;
+            top: 0;
+
+            width: 2px;
+            height: 100%;
+
+            background: rgba(255,255,255,0.1);
+        }
+
+        .timeline-item {
+            position: relative;
+
+            padding-left: 40px;
+
+            margin-bottom: 40px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+
+            left: 0;
+            top: 5px;
+
+            width: 18px;
+            height: 18px;
+
+            border-radius: 50%;
+
+            background: var(--primary);
+
+            box-shadow: 0 0 0 5px rgba(108,99,255,0.12);
+        }
+
+        .timeline-item span {
+            color: var(--primary-light);
+            font-size: 13px;
+        }
+
+        .timeline-item h3 {
+            margin: 5px 0;
+        }
+
+        .timeline-item p {
+            color: var(--text-light);
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-box {
+            text-align: center;
+
+            padding: 70px 30px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(108,99,255,0.12),
+                    rgba(0,212,255,0.06)
+                );
+
+            border: 1px solid var(--border);
+        }
+
+        .contact-box h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 30px 0;
+
+            border-top: 1px solid var(--border);
+
+            text-align: center;
+
+            color: var(--text-light);
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 950px) {
+
+            .hero-content,
+            .stage {
+                grid-template-columns: 1fr;
+            }
+
+            .code-card {
+                max-width: 600px;
+                margin: auto;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+                letter-spacing: -2px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .about-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 34px;
+            }
+
+            .stage-year {
+                font-size: 70px;
+            }
+
+            .contact-box h2 {
+                font-size: 32px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header>
+
+    <div class="container navbar">
+
+        <a href="#accueil" class="logo">
+            C<span>.</span>
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="#accueil">🏠 Accueil</a>
+            </li>
+
+            <li>
+                <a href="#apropos">👤 À propos</a>
+            </li>
+
+            <li>
+                <a href="#competences">🛠️ Compétences</a>
+            </li>
+
+            <li>
+                <a href="#projets">💻 Projets</a>
+            </li>
+
+            <li>
+                <a href="#stage">💼 Stage</a>
+            </li>
+
+            <li>
+                <a href="CV_claircy.pdf" target="_blank">📄 CV</a>
+            </li>
+
+            <li>
+                <a href="#contact">📞 Contact</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main>
+
+<section class="hero" id="accueil">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div>
+
+                <div class="badge">
+                    BTS SIO • SLAM • Développement
+                </div>
+
+                <h1>
+                    Bonjour, moi c'est
+                    <span>Claircy.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Étudiant en BTS SIO option SLAM, je développe des
+                    applications web et j'explore les technologies liées
+                    au développement, aux bases de données et aux serveurs.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#projets" class="btn btn-primary">
+                        💻 Voir mes projets
+                    </a>
+
+                    <a
+                        href="CV_claircy.pdf"
+                        class="btn btn-outline"
+                        target="_blank">
+                        📄 Voir mon CV
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- CODE CARD -->
+
+            <div class="code-card">
+
+                <div class="window-top">
+
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+
+                </div>
+
+                <div class="code">
+
+                    <div>
+                        <span class="purple">const</span>
+                        developer = {
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;name:
+                        <span class="green">
+                            "Claircy"
+                        </span>,
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;formation:
+                        <span class="green">
+                            "BTS SIO SLAM"
+                        </span>,
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;focus:
+                        <span class="green">
+                            "Web Development"
+                        </span>,
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;database:
+                        <span class="green">
+                            "SQL / MySQL"
+                        </span>,
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;os:
+                        <span class="green">
+                            "Linux"
+                        </span>
+                    </div>
+
+                    <div>
+                        };
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     À PROPOS
+========================= -->
+
+<section id="apropos">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>01 — À propos</span>
+
+            <h2>Un étudiant passionné par le développement.</h2>
+
+            <p>
+                Je construis progressivement mes compétences à travers
+                mes cours, mes projets personnels et mes expériences
+                professionnelles.
+            </p>
+
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="about-card">
+
+                <h3>Mon profil</h3>
+
+                <p>
+                    Je suis actuellement étudiant en BTS SIO option SLAM.
+                    Je m'intéresse particulièrement au développement web,
+                    à la programmation, aux bases de données et à
+                    l'administration de serveurs Linux.
+                </p>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <h3>Mon objectif</h3>
+
+                <p>
+                    Continuer à progresser dans le développement logiciel
+                    et construire des projets concrets qui me permettent
+                    de mettre en pratique les connaissances acquises
+                    pendant ma formation.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat">
+                <strong>BTS</strong>
+                <span>SIO — SLAM</span>
+            </div>
+
+            <div class="stat">
+                <strong>Web</strong>
+                <span>Développement</span>
+            </div>
+
+            <div class="stat">
+                <strong>SQL</strong>
+                <span>Bases de données</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COMPÉTENCES
+========================= -->
+
+<section id="competences">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>02 — Compétences</span>
+
+            <h2>Technologies & outils.</h2>
+
+            <p>
+                Les principales technologies et outils que j'utilise
+                dans mes projets scolaires et personnels.
+            </p>
+
+        </div>
+
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    &lt;/&gt;
+                </div>
+
+                <h3>Développement Web</h3>
+
+                <p>
+                    HTML, CSS, JavaScript et PHP pour créer
+                    des interfaces et applications web.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    DB
+                </div>
+
+                <h3>Bases de données</h3>
+
+                <p>
+                    SQL, MySQL, MariaDB et conception de bases
+                    de données relationnelles.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    Git
+                </div>
+
+                <h3>Gestion de projet</h3>
+
+                <p>
+                    Git, GitLab, GitHub et Trello pour organiser
+                    et suivre mes projets.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    VPS
+                </div>
+
+                <h3>Serveurs</h3>
+
+                <p>
+                    Linux, Apache, PHP, MariaDB et déploiement
+                    d'applications sur VPS.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROJETS
+========================= -->
+
+<section id="projets">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>03 — Projets</span>
+
+            <h2>Quelques projets réalisés.</h2>
+
+            <p>
+                Des projets scolaires et professionnels qui m'ont permis
+                de développer mes compétences techniques.
+            </p>
+
+        </div>
+
+
+        <div class="projects-grid">
+
+
+            <article class="project-card">
+
+                <span class="project-number">
+                    PROJET 01
+                </span>
+
+                <h3>M@banque</h3>
+
+                <p>
+                    Application web de gestion bancaire développée
+                    avec PHP et MySQL. Le projet permet notamment
+                    de gérer les utilisateurs et leurs données.
+                </p>
+
+                <div class="tags">
+
+                    <span class="tag">PHP</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">PDO</span>
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+
+                </div>
+
+            </article>
+
+
+            <article class="project-card">
+
+                <span class="project-number">
+                    PROJET 02
+                </span>
+
+                <h3>MonBlog</h3>
+
+                <p>
+                    Création d'un blog avec gestion des utilisateurs,
+                    des billets et des commentaires à l'aide d'une
+                    base de données MariaDB.
+                </p>
+
+                <div class="tags">
+
+                    <span class="tag">PHP</span>
+                    <span class="tag">MariaDB</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Apache</span>
+
+                </div>
+
+            </article>
+
+
+            <article class="project-card">
+
+                <span class="project-number">
+                    PROJET 03
+                </span>
+
+                <h3>Dictionnaires</h3>
+
+                <p>
+                    Modélisation d'une base de données permettant
+                    de gérer plusieurs dictionnaires, langues,
+                    lettres et mots avec des relations SQL.
+                </p>
+
+                <div class="tags">
+
+                    <span class="tag">SQL</span>
+                    <span class="tag">MariaDB</span>
+                    <span class="tag">DataGrip</span>
+                    <span class="tag">Modélisation</span>
+
+                </div>
+
+            </article>
+
+
+            <article class="project-card">
+
+                <span class="project-number">
+                    PROJET 04
+                </span>
+
+                <h3>NT-Challenges</h3>
+
+                <p>
+                    Participation au développement d'une plateforme
+                    de quiz destinée aux étudiants souhaitant
+                    préparer leurs études à l'étranger.
+                </p>
+
+                <div class="tags">
+
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">PHP</span>
+                    <span class="tag">MySQL</span>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     STAGE
+========================= -->
+
+<section id="stage">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>04 — Expérience</span>
+
+            <h2>Mon stage professionnel.</h2>
+
+        </div>
+
+
+        <div class="stage">
+
+            <div>
+
+                <div class="stage-year">
+                    2026
+                </div>
+
+                <p style="color:#a8afc1; margin-top:15px;">
+                    5 semaines
+                </p>
+
+            </div>
+
+
+            <div class="stage-info">
+
+                <h3>Stage en développement web</h3>
+
+                <p>
+                    Durant mon stage, j'ai participé à différents
+                    travaux liés au développement et à l'intégration
+                    web ainsi qu'à l'organisation de projets.
+                </p>
+
+                <ul class="stage-list">
+
+                    <li>Utilisation de Trello</li>
+
+                    <li>Analyse SEO</li>
+
+                    <li>Développement HTML / CSS / JavaScript</li>
+
+                    <li>Travail avec PHP et MySQL</li>
+
+                    <li>Utilisation d'un environnement Linux</li>
+
+                    <li>Participation au développement de NT-Challenges</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PARCOURS
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>05 — Parcours</span>
+
+            <h2>Mon parcours scolaire.</h2>
+
+        </div>
+
+
+        <div class="timeline">
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <span>2025 — Aujourd'hui</span>
+
+                <h3>BTS SIO — Option SLAM</h3>
+
+                <p>
+                    Formation orientée développement logiciel,
+                    programmation, bases de données et réseaux.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <span>2026</span>
+
+                <h3>Stage professionnel</h3>
+
+                <p>
+                    Mise en pratique des compétences dans un
+                    environnement professionnel.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <span>Projets personnels</span>
+
+                <h3>Développement & infrastructure</h3>
+
+                <p>
+                    Création de projets web et découverte du
+                    déploiement sur serveur VPS Linux.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="contact-box">
+
+            <h2>Travaillons ensemble.</h2>
+
+            <p>
+                Vous souhaitez en savoir plus sur mon parcours,
+                mes projets ou mes compétences ?
+            </p>
+
+            <div class="contact-buttons">
+
+                <!-- REMPLACE TON EMAIL -->
+
+                <a
+                    href="mailto:ton.email@example.com"
+                    class="btn btn-primary">
+                    📞 Me contacter
+                </a>
+
+
+                <!-- CV DANS LE MÊME DOSSIER -->
+
+                <a
+                    href="CV_claircy.pdf"
+                    class="btn btn-outline"
+                    target="_blank">
+                    📄 Télécharger mon CV
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container">
+
+        © 2026 Claircy — Portfolio BTS SIO SLAM
+
+    </div>
+
+</footer>
+
+
+</body>
+</html> 
